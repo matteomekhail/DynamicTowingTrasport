@@ -21,7 +21,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-24 bg-black">
+    <section className="py-24 bg-dynamic-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {features.map((feature, index) => (
@@ -33,12 +33,12 @@ export default function Features() {
               className="text-center"
             >
               <div className="flex justify-center mb-6">
-                <div className="p-4 bg-white rounded-full text-black">
+                <div className="p-4 bg-dynamic-red rounded-full text-white">
                   {feature.icon}
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
+              <h3 className="text-xl font-bold text-dynamic-silver mb-4">{feature.title}</h3>
+              <p className="text-dynamic-silver/80">{feature.description}</p>
             </motion.div>
           ))}
         </div>
