@@ -19,8 +19,9 @@ createServer((page) =>
             ),
         setup: ({ App, props }) => {
             /* eslint-disable */
-            global.route<RouteName> = (name, params, absolute) =>
-                route(name, params as any, absolute, {
+            // @ts-ignore
+            global.route = (name: RouteName, params?: any, absolute?: boolean) =>
+                route(name, params, absolute, {
                     ...page.props.ziggy,
                     location: new URL(page.props.ziggy.location),
                 });
