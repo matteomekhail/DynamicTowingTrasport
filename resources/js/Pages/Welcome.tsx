@@ -1,15 +1,16 @@
 import Hero from "@/Components/Hero";
 import Features from "@/Components/Features";
-import Showcase from "@/Components/Showcase";
 import Contact from "@/Components/Contact";
+import Layout from "@/Layouts/Layout";
+import Showcase from "@/Components/Showcase";
 
-export default function Home() {
+export default function Welcome() {
   return (
-    <main className="bg-black">
+    <Layout>
       <Hero />
       <Features />
       <Showcase />
       <Contact />
-    </main>
+    </Layout>
   );
 }

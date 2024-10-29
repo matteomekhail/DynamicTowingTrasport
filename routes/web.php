@@ -6,22 +6,34 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Main', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+    return Inertia::render('Welcome');
+})->name('welcome');
+
+
+Route::get('/about', function () {
+    return Inertia::render('About', [
+        'title' => 'About Us'
     ]);
-});
+})->name('about');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/services', function () {
+    return Inertia::render('Services', [
+        'title' => 'Our Services'
+    ]);
+})->name('services');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::get('/technology', function () {
+    return Inertia::render('Gallery', [
+        'title' => 'Technology'
+    ]);
+})->name('technology');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/contact', function () {
+    return Inertia::render('Contact', [
+        'title' => 'Contact Us'
+    ]);
+})->name('contact');
+
 
 require __DIR__.'/auth.php';
