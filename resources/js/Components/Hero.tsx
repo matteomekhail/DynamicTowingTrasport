@@ -1,90 +1,114 @@
+import React from 'react';
 import { motion } from 'framer-motion';
-import { PhoneCall, Clock, Shield } from 'lucide-react';
+import { PhoneCall, Clock, Shield, ArrowRight } from 'lucide-react';
 
-function App() {
-    return (
-        <div className="relative h-screen overflow-hidden bg-gradient-to-b from-black via-black to-gray-900">
-            <div className="absolute inset-0">
-                <img
-                    src="/img/lambo.jpg"
-                    alt="Professional tow truck at night"
-                    className="w-full h-full object-cover opacity-50"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-transparent" />
-            </div>
+export default function Hero() {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-dynamic-black">
+      {/* Background Image & Overlays */}
+      <div className="absolute inset-0">
+        <img
+          src="/img/lambo.jpg"
+          alt="Professional tow truck at night"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-dynamic-black via-dynamic-black/90 to-dynamic-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-dynamic-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-dynamic-red/10 via-transparent to-transparent opacity-60" />
+      </div>
 
-            <div className="relative h-full flex items-center">
+      {/* Content */}
+      <div className="relative min-h-screen flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+          <div className="max-w-3xl">
+            {/* Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-sm font-bold tracking-wider uppercase text-dynamic-red mb-4 block">
+                Premium Towing Services
+              </span>
+              <h1 className="text-6xl md:text-7xl font-bold mb-6">
+                <span className="text-dynamic-silver">Fast &</span>
+                <br />
+                <span className="bg-gradient-to-r from-dynamic-red to-dynamic-red-dark bg-clip-text text-transparent">
+                  Reliable Towing
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl text-dynamic-silver/80 max-w-2xl mb-8"
+            >
+              Professional 24/7 emergency towing and roadside assistance when you need it most. 
+              We're here to help you get back on the road.
+            </motion.p>
+
+            {/* Call to Action */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-wrap gap-4 mb-12"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-dynamic-red to-dynamic-red-dark text-white px-8 py-4 rounded-xl font-medium shadow-custom flex items-center gap-3 group"
+              >
+                <PhoneCall className="w-5 h-5" />
+                <span>Call Now</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+
+              <motion.a
+                href="/services"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-service text-dynamic-silver px-8 py-4 rounded-xl font-medium group hover:text-white transition-colors flex items-center gap-3"
+              >
+                <span>Our Services</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.a>
+            </motion.div>
+
+            {/* Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+              {[
+                { icon: <Clock className="w-6 h-6" />, text: "24/7 Service" },
+                { icon: <Shield className="w-6 h-6" />, text: "Licensed & Insured" },
+                { icon: <PhoneCall className="w-6 h-6" />, text: "Quick Response" }
+              ].map((feature, index) => (
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
+                  key={feature.text}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.8 + index * 0.1 }}
+                  className="bg-gradient-service backdrop-blur-sm rounded-2xl p-4 flex items-center gap-3 group hover:bg-dynamic-black-light transition-all"
                 >
-                    <div className="max-w-3xl">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="text-6xl md:text-7xl font-bold mb-6 tracking-tight"
-                        >
-                            <span className="text-white">Fast &</span><br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">
-                                Reliable Towing
-                            </span>
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="text-xl text-gray-300 max-w-2xl mb-8"
-                        >
-                            Professional 24/7 emergency towing and roadside assistance when you need it most. We're here to help you get back on the road.
-                        </motion.p>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
-                            className="flex gap-4 mb-12"
-                        >
-                            <button className="bg-gradient-to-r from-red-600 to-red-500 text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:shadow-red-500/30 transition-all duration-300 flex items-center gap-2">
-                                <PhoneCall className="w-5 h-5" />
-                                Call Now
-                            </button>
-                            <a href={route('services')}>
-                                <button className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20">
-                                    Our Services
-                                </button>
-                            </a>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.8 }}
-                            className="grid grid-cols-2 md:grid-cols-3 gap-6"
-                        >
-                            <div className="flex items-center gap-3 text-gray-300">
-                                <Clock className="w-6 h-6 text-red-500" />
-                                <span>24/7 Service</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-gray-300">
-                                <Shield className="w-6 h-6 text-red-500" />
-                                <span>Licensed & Insured</span>
-                            </div>
-                            <div className="flex items-center gap-3 text-gray-300">
-                                <PhoneCall className="w-6 h-6 text-red-500" />
-                                <span>Quick Response</span>
-                            </div>
-                        </motion.div>
-                    </div>
+                  <div className="w-12 h-12 bg-gradient-to-r from-dynamic-red to-dynamic-red-dark rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                    {feature.icon}
+                  </div>
+                  <span className="text-dynamic-silver group-hover:text-white transition-colors">
+                    {feature.text}
+                  </span>
                 </motion.div>
-            </div>
-
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+              ))}
+            </motion.div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
-
-export default App;
