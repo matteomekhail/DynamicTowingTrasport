@@ -17,20 +17,21 @@ export default function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="tel:1-800-TOW-HELP"
+              href="tel:+61401993669"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-dynamic-red text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-dynamic-red-dark transition-colors"
             >
               Call Now
             </motion.a>
-            <motion.button
+            <motion.a
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-transparent text-dynamic-silver border-2 border-dynamic-silver px-8 py-4 rounded-full text-lg font-semibold hover:bg-dynamic-silver/10 transition-colors"
             >
               Request Online
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
       </div>

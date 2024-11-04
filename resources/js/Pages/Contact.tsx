@@ -10,34 +10,45 @@ import {
 } from 'react-icons/fa';
 import Layout from '@/Layouts/Layout';
 
+const serviceLocations = [
+  "Sydney Metropolitan Area",
+  "Wollongong",
+  "Shellharbour",
+  "Canberra",
+  "Melbourne",
+  "Goulburn",
+  "Newcastle"
+];
+
 const contactInfo = [
   {
     icon: <FaPhone className="w-6 h-6" />,
     title: "24/7 Emergency Line",
-    content: "1-800-TOW-HELP",
+    content: "+61 401 993 669",
     description: "Available round the clock for urgent assistance",
-    link: "tel:1800869435"
+    link: "tel:+61401993669"
   },
   {
     icon: <FaWhatsapp className="w-6 h-6" />,
     title: "WhatsApp Support",
-    content: "+61 400 123 456",
+    content: "+61 401 993 669",
     description: "Quick responses for immediate help",
-    link: "https://wa.me/61400123456"
+    link: "https://wa.me/61401993669"
   },
   {
     icon: <FaEnvelope className="w-6 h-6" />,
     title: "Email Us",
-    content: "info@dynamictowing.com",
+    content: "info.dynamictowing@gmail.com",
     description: "For quotes and general inquiries",
-    link: "mailto:info@dynamictowing.com"
+    link: "mailto:info.dynamictowing@gmail.com"
   },
   {
     icon: <FaMapMarkerAlt className="w-6 h-6" />,
-    title: "Service Area",
-    content: "Sydney Metropolitan Area",
-    description: "Covering all Sydney suburbs 24/7",
-    link: "#map"
+    title: "Service Areas",
+    content: "Multiple Locations Available",
+    description: "Covering major cities and regions",
+    link: "#map",
+    locations: serviceLocations
   },
   {
     icon: <FaClock className="w-6 h-6" />,
@@ -51,7 +62,7 @@ const contactInfo = [
 export default function Contact() {
   return (
     <Layout title="Contact Us">
-      <div className="min-h-screen bg-dynamic-black">
+      <div className="min-h-screen bg-dynamic-black pb-32">
         {/* Hero Section */}
         <div className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-radial from-dynamic-red/10 via-transparent to-transparent" />
@@ -153,7 +164,7 @@ export default function Contact() {
                   <div className="bg-gradient-service p-6 rounded-2xl shadow-custom relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-r from-dynamic-red/0 to-dynamic-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-dynamic-red to-dynamic-red-dark rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-r from-dynamic-red to-dynamic-red-dark rounded-xl flex items-center justify-center shrink-0 transform group-hover:scale-110 transition-transform duration-300">
                         {info.icon}
                       </div>
                       <div>
@@ -162,6 +173,18 @@ export default function Contact() {
                         </h3>
                         <p className="text-dynamic-red font-medium mb-1">{info.content}</p>
                         <p className="text-dynamic-silver/60 text-sm">{info.description}</p>
+                        {info.locations && (
+                          <div className="mt-4 flex flex-wrap gap-1.5">
+                            {info.locations.map((location) => (
+                              <span 
+                                key={location} 
+                                className="inline-flex items-center px-2.5 py-0.5 rounded-lg text-xs font-medium bg-dynamic-black-light text-dynamic-silver/80 border border-dynamic-red/20 hover:border-dynamic-red/40 transition-colors duration-200"
+                              >
+                                {location}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -194,7 +217,7 @@ export default function Contact() {
             whileInView={{ opacity: 1 }}
             className="mt-16 relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-dynamic-red/20 to-transparent rounded-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-dynamic-red/20 to-transparent rounded-3xl pb-12" />
             <div className="relative bg-gradient-service rounded-3xl p-12 text-center">
               <h3 className="text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-dynamic-red to-dynamic-red-dark bg-clip-text text-transparent">
@@ -205,13 +228,13 @@ export default function Contact() {
                 Our team is available 24/7 to help you with any emergency towing needs
               </p>
               <motion.a
-                href="tel:1800869435"
+                href="tel:+61401993669"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-dynamic-red to-dynamic-red-dark text-white px-8 py-4 rounded-xl font-medium shadow-custom group"
               >
                 <FaPhone className="w-5 h-5" />
-                <span>1-800-TOW-HELP</span>
+                <span>+61 401 993 669</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
             </div>

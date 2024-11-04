@@ -18,7 +18,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative min-h-screen flex items-center">
+      <div className="relative min-h-screen flex items-center z-[4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="max-w-3xl">
             {/* Heading */}

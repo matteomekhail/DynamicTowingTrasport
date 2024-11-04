@@ -206,7 +206,7 @@ export default function Services() {
                 </p>
                 <div className="space-y-4">
                   <motion.a
-                    href="tel:+1234567890"
+                    href="tel:+61401993669"
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-4 text-dynamic-silver hover:text-dynamic-red transition-colors"
                   >
@@ -214,12 +214,12 @@ export default function Services() {
                       <FaPhone className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="text-sm text-dynamic-silver/60">Call us 24/7</div>
-                      <div className="font-semibold">+1 (234) 567-890</div>
+                      <div className="text-sm text-dynamic-silver/60">24/7 Emergency Line</div>
+                      <div className="font-semibold">+61 401 993 669</div>
                     </div>
                   </motion.a>
                   <motion.a
-                    href="mailto:contact@example.com"
+                    href="mailto:info.dynamictowing@gmail.com"
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-4 text-dynamic-silver hover:text-dynamic-red transition-colors"
                   >
@@ -228,11 +228,11 @@ export default function Services() {
                     </div>
                     <div>
                       <div className="text-sm text-dynamic-silver/60">Email us</div>
-                      <div className="font-semibold">contact@example.com</div>
+                      <div className="font-semibold">info.dynamictowing@gmail.com</div>
                     </div>
                   </motion.a>
                   <motion.a
-                    href="https://wa.me/1234567890"
+                    href="https://wa.me/61401993669"
                     whileHover={{ scale: 1.02, x: 5 }}
                     className="flex items-center gap-4 text-dynamic-silver hover:text-dynamic-red transition-colors"
                   >

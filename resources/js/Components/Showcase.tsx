@@ -19,7 +19,7 @@ const services = [
     id: 2,
     title: "Heavy Equipment Moving",
     description: "Professional transport for construction and industrial machinery",
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1200&q=80",
+    image: "/img/Heavy.webp",
     specs: [
       "Up to 75-ton capacity",
       "Specialized rigging",
@@ -31,7 +31,7 @@ const services = [
     id: 3,
     title: "Emergency Recovery",
     description: "Advanced recovery solutions for challenging situations",
-    image: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=1200&q=80",
+    image: "/img/Emergency.webp",
     specs: [
       "Rotator service",
       "Underwater recovery",
@@ -46,7 +46,7 @@ export default function Showcase() {
   const activeService = services[activeIndex];
 
   return (
-    <section className="bg-dynamic-black py-32 relative overflow-hidden">
+    <section className="bg-dynamic-black py-32 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-radial from-dynamic-red/10 via-transparent to-transparent" />
       
@@ -72,37 +72,47 @@ export default function Showcase() {
           {/* Left: Categories */}
           <div className="space-y-6">
             {services.map((service, idx) => (
-              <motion.button
+              <div 
                 key={service.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.1 }}
                 onClick={() => setActiveIndex(idx)}
-                className="w-full"
+                className="relative cursor-pointer"
               >
-                <div className={`relative rounded-3xl p-8 transition-all duration-300 group overflow-hidden ${
-                  activeIndex === idx 
-                    ? 'bg-gradient-to-r from-dynamic-red to-dynamic-red-dark' 
-                    : 'bg-gradient-service hover:bg-gradient-to-r hover:from-dynamic-red/20 hover:to-transparent'
-                }`}>
-                  <div className="relative z-10">
-                    <h3 className={`text-2xl font-bold mb-3 transition-colors ${
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`w-full text-left relative ${
+                    activeIndex === idx 
+                      ? 'z-20' 
+                      : 'z-10'
+                  }`}
+                >
+                  <div 
+                    className={`relative rounded-3xl p-8 transition-all duration-300 group overflow-hidden ${
                       activeIndex === idx 
-                        ? 'text-white' 
-                        : 'text-dynamic-silver group-hover:text-white'
-                    }`}>
-                      {service.title}
-                    </h3>
-                    <p className={`transition-colors ${
-                      activeIndex === idx 
-                        ? 'text-white/90' 
-                        : 'text-dynamic-silver/60 group-hover:text-dynamic-silver'
-                    }`}>
-                      {service.description}
-                    </p>
+                        ? 'bg-gradient-to-r from-dynamic-red to-dynamic-red-dark' 
+                        : 'bg-gradient-service hover:bg-gradient-to-r hover:from-dynamic-red/20 hover:to-transparent'
+                    }`}
+                  >
+                    <div className="relative z-10">
+                      <h3 className={`text-2xl font-bold mb-3 transition-colors ${
+                        activeIndex === idx 
+                          ? 'text-white' 
+                          : 'text-dynamic-silver group-hover:text-white'
+                      }`}>
+                        {service.title}
+                      </h3>
+                      <p className={`transition-colors ${
+                        activeIndex === idx 
+                          ? 'text-white/90' 
+                          : 'text-dynamic-silver/60 group-hover:text-dynamic-silver'
+                      }`}>
+                        {service.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </motion.button>
+                </motion.div>
+              </div>
             ))}
           </div>
 
@@ -117,7 +127,7 @@ export default function Showcase() {
                 transition={{ duration: 0.5 }}
                 className="h-full"
               >
-                <div className="relative rounded-3xl overflow-hidden h-full bg-gradient-service">
+                <div className="relative rounded-3xl overflow-hidden h-full bg-gradient-service ">
                   {/* Image */}
                   <div className="absolute inset-0">
                     <img
