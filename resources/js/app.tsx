@@ -9,7 +9,7 @@ import { createRoot, hydrateRoot } from 'react-dom/client';
 const appName = import.meta.env.VITE_APP_NAME || 'Towing Services';
 
 createInertiaApp({
-    title: (title) => `${title} - ${appName}`,
+    title: (title) => `${appName}`,
     resolve: (name) =>
         resolvePageComponent(
             `./Pages/${name}.tsx`,
