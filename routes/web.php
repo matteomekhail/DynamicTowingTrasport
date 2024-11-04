@@ -29,11 +29,23 @@ Route::get('/technology', function () {
 })->name('technology');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 Route::get('/contact', function () {
     return Inertia::render('Contact', [
         'title' => 'Contact Us'
     ]);
 })->name('contact');
 
+Route::get('/privacy-policy', function () {
+    return Inertia::render('PrivacyPolicy', [
+        'title' => 'Privacy Policy'
+    ]);
+})->name('privacy.policy');
+
+Route::get('/terms-of-service', function () {
+    return Inertia::render('TermsOfService', [
+        'title' => 'Terms of Service'
+    ]);
+})->name('terms.service');
 
 require __DIR__.'/auth.php';

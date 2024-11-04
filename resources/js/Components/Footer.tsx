@@ -120,17 +120,23 @@ function Footer() {
                             © {new Date().getFullYear()} Dynamic Towing & Transport - Professional Hooker. All rights reserved.
                         </p>
                         <div className="flex space-x-6 mt-4 md:mt-0">
-                            <Link href={route('welcome')} className="text-gray-400 hover:text-dynamic-red text-sm">
+                            <Link 
+                                href={route('privacy.policy')} 
+                                className="text-gray-400 hover:text-dynamic-red text-sm transition-colors duration-200"
+                            >
                                 Privacy Policy
                             </Link>
-                            <Link href={route('welcome')} className="text-gray-400 hover:text-dynamic-red text-sm">
+                            <Link 
+                                href={route('terms.service')} 
+                                className="text-gray-400 hover:text-dynamic-red text-sm transition-colors duration-200"
+                            >
                                 Terms of Service
                             </Link>
                         </div>
                     </div>
-                <span className="text-gray-400">
-                    Developed and designed by <a href="https://stagetwolab.com" className="bg-clip-text text-transparent bg-gradient-to-r from-[#e85f4b] to-[#3a8f87] hover:underline">StageTwo Lab</a>.
-                </span>
+                    <span className="text-gray-400">
+                        Developed and designed by <a href="https://stagetwolab.com" className="bg-clip-text text-transparent bg-gradient-to-r from-[#e85f4b] to-[#3a8f87] hover:underline">StageTwo Lab</a>.
+                    </span>
                 </div>
             </div>
         </footer>
