@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -47,5 +48,7 @@ Route::get('/terms-of-service', function () {
         'title' => 'Terms of Service'
     ]);
 })->name('terms.service');
+
+Route::post('/contactEmail', [ContactController::class, 'store'])->name('contact.store');
 
 require __DIR__.'/auth.php';

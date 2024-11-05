@@ -16,6 +16,8 @@ import {
   FaWhatsapp
 } from 'react-icons/fa';
 import Layout from '@/Layouts/Layout';
+import { useForm } from '@inertiajs/react';
+import { toast } from 'sonner';
 
 const services = [
   {
@@ -89,6 +91,28 @@ export default function Services() {
   const filteredServices = selectedCategory === "All" 
     ? services 
     : services.filter(service => service.category === selectedCategory);
+
+  const form = useForm({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    
+    form.post('/contactEmail', {
+      onSuccess: () => {
+        toast.success('La tua richiesta è stata inviata con successo!');
+        form.reset();
+      },
+      onError: () => {
+        toast.error('Si è verificato un errore. Riprova più tardi.');
+      }
+    });
+  }
 
   return (
     <Layout title="Our Services">
@@ -258,43 +282,55 @@ export default function Services() {
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-dynamic-red/10 blur-3xl" />
                 <div className="relative">
                   <h3 className="text-2xl font-bold text-dynamic-silver mb-6">Get a Quick Quote</h3>
-                  <div className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <input 
                         type="text" 
                         placeholder="First Name" 
+                        value={form.data.firstName}
+                        onChange={e => form.setData('firstName', e.target.value)}
                         className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                       />
                       <input 
                         type="text" 
                         placeholder="Last Name" 
+                        value={form.data.lastName}
+                        onChange={e => form.setData('lastName', e.target.value)}
                         className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                       />
                     </div>
                     <input 
                       type="email" 
                       placeholder="Email Address" 
+                      value={form.data.email}
+                      onChange={e => form.setData('email', e.target.value)}
                       className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                     />
                     <input 
                       type="tel" 
                       placeholder="Phone Number" 
+                      value={form.data.phone}
+                      onChange={e => form.setData('phone', e.target.value)}
                       className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                     />
                     <textarea 
                       placeholder="Tell us about your transport needs" 
                       rows={4}
+                      value={form.data.message}
+                      onChange={e => form.setData('message', e.target.value)}
                       className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red resize-none"
                     />
                     <motion.button
+                      type="submit"
+                      disabled={form.processing}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gradient-to-r from-dynamic-red to-dynamic-red-dark text-white py-4 rounded-xl font-medium shadow-custom flex items-center justify-center gap-2 group"
+                      className="w-full bg-gradient-to-r from-dynamic-red to-dynamic-red-dark text-white py-4 rounded-xl font-medium shadow-custom flex items-center justify-center gap-2 group disabled:opacity-50"
                     >
-                      Get Quote Now
+                      {form.processing ? 'Sending...' : 'Get Quote Now'}
                       <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                     </motion.button>
-                  </div>
+                  </form>
                 </div>
               </motion.div>
             </div>
