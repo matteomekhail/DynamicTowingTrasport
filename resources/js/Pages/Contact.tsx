@@ -9,6 +9,10 @@ import {
   FaWhatsapp
 } from 'react-icons/fa';
 import Layout from '@/Layouts/Layout';
+import { useForm } from '@inertiajs/react';
+import { toast } from 'sonner';
+import { useEffect } from "react";
+import { PageProps } from '@/types';
 
 const serviceLocations = [
   "Sydney Metropolitan Area",
@@ -60,6 +64,35 @@ const contactInfo = [
 ];
 
 export default function Contact() {
+  const form = useForm({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    form.post('/send-email', {
+      preserveScroll: true,
+      onSuccess: () => {
+        toast('Email sent successfully!', {
+          description: "We'll get back to you soon.",
+          duration: 5000,
+        });
+        form.reset();
+      },
+      onError: () => {
+        toast('Failed to send email', {
+          description: "Please try again later.",
+          duration: 5000,
+        });
+      }
+    });
+  }
+
   return (
     <Layout title="Contact Us">
       <div className="min-h-screen bg-dynamic-black pb-32">
@@ -95,12 +128,14 @@ export default function Contact() {
               <div className="absolute bottom-0 left-0 w-32 h-32 bg-dynamic-red/10 blur-3xl" />
               <div className="relative">
                 <h2 className="text-2xl font-bold text-dynamic-silver mb-8">Send Us a Message</h2>
-                <div className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-dynamic-silver/80 mb-2 text-sm">First Name</label>
                       <input 
                         type="text"
+                        value={form.data.firstName}
+                        onChange={e => form.setData('firstName', e.target.value)}
                         className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                         placeholder="John"
                       />
@@ -109,6 +144,8 @@ export default function Contact() {
                       <label className="block text-dynamic-silver/80 mb-2 text-sm">Last Name</label>
                       <input 
                         type="text"
+                        value={form.data.lastName}
+                        onChange={e => form.setData('lastName', e.target.value)}
                         className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                         placeholder="Doe"
                       />
@@ -118,6 +155,8 @@ export default function Contact() {
                     <label className="block text-dynamic-silver/80 mb-2 text-sm">Email Address</label>
                     <input 
                       type="email"
+                      value={form.data.email}
+                      onChange={e => form.setData('email', e.target.value)}
                       className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                       placeholder="john@example.com"
                     />
@@ -126,6 +165,8 @@ export default function Contact() {
                     <label className="block text-dynamic-silver/80 mb-2 text-sm">Phone Number</label>
                     <input 
                       type="tel"
+                      value={form.data.phone}
+                      onChange={e => form.setData('phone', e.target.value)}
                       className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red"
                       placeholder="+61 400 123 456"
                     />
@@ -134,19 +175,23 @@ export default function Contact() {
                     <label className="block text-dynamic-silver/80 mb-2 text-sm">Message</label>
                     <textarea 
                       rows={4}
+                      value={form.data.message}
+                      onChange={e => form.setData('message', e.target.value)}
                       className="w-full px-4 py-3 bg-dynamic-black-light rounded-xl border-0 text-dynamic-silver placeholder-dynamic-silver/50 focus:ring-2 focus:ring-dynamic-red resize-none"
                       placeholder="How can we help you?"
                     />
                   </div>
                   <motion.button
+                    type="submit"
+                    disabled={form.processing}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-dynamic-red to-dynamic-red-dark text-white py-4 rounded-xl font-medium shadow-custom flex items-center justify-center gap-2 group"
+                    className="w-full bg-gradient-to-r from-dynamic-red to-dynamic-red-dark text-white py-4 rounded-xl font-medium shadow-custom flex items-center justify-center gap-2 group disabled:opacity-50"
                   >
-                    Send Message
+                    {form.processing ? 'Sending...' : 'Send Message'}
                     <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                   </motion.button>
-                </div>
+                </form>
               </div>
             </motion.div>
 

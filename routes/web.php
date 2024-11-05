@@ -29,8 +29,6 @@ Route::get('/technology', function () {
     ]);
 })->name('technology');
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
 Route::get('/contact', function () {
     return Inertia::render('Contact', [
         'title' => 'Contact Us'
@@ -49,6 +47,6 @@ Route::get('/terms-of-service', function () {
     ]);
 })->name('terms.service');
 
-Route::post('/contactEmail', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/send-email', [ContactController::class, 'store'])->name('send.email');
 
 require __DIR__.'/auth.php';
