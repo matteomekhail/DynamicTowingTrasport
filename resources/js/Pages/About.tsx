@@ -16,7 +16,7 @@ const stats = [
   { 
     number: '3+', 
     label: 'Years Experience',
-    description: 'Leading the industry since 2019'
+    description: 'Leading the industry since 2021'
   },
   { 
     number: '1000+', 
