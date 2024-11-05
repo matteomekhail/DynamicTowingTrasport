@@ -102,7 +102,7 @@ export default function About() {
                 </span>
               </h2>
               <p className="text-dynamic-silver/80 text-lg">
-                For over 25 years, Dynamic Towing has been setting the standard in professional towing and recovery services. What started as a single truck operation has grown into one of the region's most trusted names in vehicle transport and roadside assistance.
+                Since 2021, Dynamic Towing has been setting the standard in professional towing and recovery services. What started as a single truck operation has grown into one of the region's most trusted names in vehicle transport and roadside assistance.
               </p>
               <p className="text-dynamic-silver/80 text-lg">
                 Our commitment to excellence, investment in cutting-edge technology, and dedication to customer service has earned us numerous industry accolades and, more importantly, the trust of thousands of satisfied customers.
