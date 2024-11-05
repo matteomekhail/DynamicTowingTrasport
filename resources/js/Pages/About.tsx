@@ -14,12 +14,12 @@ import Layout from '@/Layouts/Layout';
 
 const stats = [
   { 
-    number: '25+', 
+    number: '3+', 
     label: 'Years Experience',
     description: 'Leading the industry since 1995'
   },
   { 
-    number: '50,000+', 
+    number: '1000+', 
     label: 'Successful Tows',
     description: 'Trusted by thousands of customers'
   },
